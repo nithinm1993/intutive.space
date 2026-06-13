@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intutive — An Intuitive Partner for the AI Era</title>
+  <meta name="description" content="Intutive builds intelligent systems enabling humans to work in parallel with AI. Discover AURA Intelligence, Quantum Plugin, and more." />
+  <meta property="og:title" content="Intutive — An Intuitive Partner" />
+  <meta property="og:description" content="Enabling humans to work in parallel with AI. Agent orchestration, hardware integration, and intelligent automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://intutive.space" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://intutive.space" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__logo">
+        <svg class="loader__wordmark" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Intutive">
+          <!-- I -->
+          <rect class="wm-letter" x="0" y="0" width="14" height="60" rx="2"/>
+          <!-- N -->
+          <path class="wm-letter" d="M40 60V0h14l36 42V0h14v60H90L54 18v42z"/>
+          <!-- T -->
+          <path class="wm-letter" d="M130 0h56v14h-21v46h-14V14h-21z"/>
+          <!-- U -->
+          <path class="wm-letter" d="M210 0h14v38c0 8.5 5.5 14 14 14s14-5.5 14-14V0h14v38c0 14-10 24-28 24s-28-10-28-24z"/>
+          <!-- T -->
+          <path class="wm-letter" d="M292 0h56v14h-21v46h-14V14h-21z"/>
+          <!-- I -->
+          <rect class="wm-letter" x="372" y="0" width="14" height="60" rx="2"/>
+          <!-- V -->
+          <path class="wm-letter" d="M410 0h15l21 46 21-46h15L455 60h-18z"/>
+          <!-- E -->
+          <path class="wm-letter" d="M504 0h52v14h-38v10h34v12h-34v10h38v14h-52z"/>
+        </svg>
+      </div>
+      <div class="loader__progress">
+        <div class="loader__bar"><div class="loader__bar-fill"></div></div>
+        <span class="loader__percent mono">0%</span>
+      </div>
+      <p class="loader__tagline mono">INITIALIZING</p>
+    </div>
+  </div>
+
+  <!-- ========== 3D CANVAS CONTAINER ========== -->
+  <div id="scene-container"></div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="main-nav" class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a href="/" class="nav__logo" aria-label="Intutive Home">
+        <svg class="nav__wordmark" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect class="wm-letter" x="0" y="0" width="14" height="60" rx="2"/>
+          <path class="wm-letter" d="M40 60V0h14l36 42V0h14v60H90L54 18v42z"/>
+          <path class="wm-letter" d="M130 0h56v14h-21v46h-14V14h-21z"/>
+          <path class="wm-letter" d="M210 0h14v38c0 8.5 5.5 14 14 14s14-5.5 14-14V0h14v38c0 14-10 24-28 24s-28-10-28-24z"/>
+          <path class="wm-letter" d="M292 0h56v14h-21v46h-14V14h-21z"/>
+          <rect class="wm-letter" x="372" y="0" width="14" height="60" rx="2"/>
+          <path class="wm-letter" d="M410 0h15l21 46 21-46h15L455 60h-18z"/>
+          <path class="wm-letter" d="M504 0h52v14h-38v10h34v12h-34v10h38v14h-52z"/>
+        </svg>
+      </a>
+
+      <!-- Right controls -->
+      <div class="nav__controls">
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="nav__theme-btn glass-pill" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <!-- CTA -->
+        <a href="#cta" class="nav__cta glass-pill">
+          <span class="mono">GET EARLY ACCESS</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== SIDE DOTS NAVIGATION (desktop) ========== -->
+  <div id="side-nav" class="side-nav" aria-label="Section navigation">
+    <div class="side-nav__dot active" data-section="hero"><span>Home</span></div>
+    <div class="side-nav__dot" data-section="vision"><span>Vision</span></div>
+    <div class="side-nav__dot" data-section="products"><span>Products</span></div>
+    <div class="side-nav__dot" data-section="capabilities"><span>Capabilities</span></div>
+    <div class="side-nav__dot" data-section="cta"><span>Join</span></div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="smooth-content">
+
+    <!-- HERO -->
+    <section id="hero" class="section section--hero">
+      <div class="section__content section__content--centered">
+        <span class="label mono fade-up">THE FUTURE IS INTUITIVE</span>
+        <h1 class="display-heading fade-up">
+          <span class="gradient-text">An Intuitive Partner</span><br />
+          <span>for the AI Era</span>
+        </h1>
+        <p class="section__desc fade-up">
+          We build intelligent systems that enable humans to work in parallel with AI — 
+          bridging the gap between human intuition and machine capability.
+        </p>
+        <div class="section__actions fade-up">
+          <a href="#products" class="btn btn--primary glass-pill">
+            <span class="mono">EXPLORE PRODUCTS</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#vision" class="btn btn--ghost glass-pill">
+            <span class="mono">OUR VISION</span>
+          </a>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator fade-up">
+          <div class="scroll-indicator__mouse">
+            <div class="scroll-indicator__wheel"></div>
+          </div>
+          <span class="mono">SCROLL TO EXPLORE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION -->
+    <section id="vision" class="section section--vision">
+      <div class="section__content">
+        <span class="label mono fade-up">◈ OUR VISION</span>
+        <h2 class="heading fade-up">
+          We bridge the space between<br />
+          <span class="gradient-text">human intuition</span> and<br />
+          <span class="gradient-text">machine intelligence</span>
+        </h2>
+        <p class="section__desc section__desc--wide fade-up">
+          In a world where AI is rapidly transforming every industry, we believe the future 
+          belongs to those who can seamlessly integrate human creativity with artificial intelligence. 
+          Intutive builds the tools, engines, and platforms that make this collaboration not just possible — 
+          but intuitive.
+        </p>
+        <div class="stats fade-up">
+          <div class="stat">
+            <span class="stat__number gradient-text" data-count="100">0</span><span class="stat__suffix gradient-text">+</span>
+            <span class="stat__label mono">DEVICES CONNECTED</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number gradient-text" data-count="50">0</span><span class="stat__suffix gradient-text">ms</span>
+            <span class="stat__label mono">AVG RESPONSE TIME</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number gradient-text" data-count="10">0</span><span class="stat__suffix gradient-text">x</span>
+            <span class="stat__label mono">PRODUCTIVITY BOOST</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS (Teaser) -->
+    <section id="products" class="section section--products">
+      <div class="section__content">
+        <span class="label mono fade-up">◈ PRODUCTS</span>
+        <h2 class="heading fade-up">
+          The engines powering<br /><span class="gradient-text">tomorrow's intelligence</span>
+        </h2>
+
+        <div class="products-grid">
+          <!-- AURA -->
+          <div class="product-card glass-card fade-up" id="product-aura">
+            <div class="product-card__badge mono">COMING SOON</div>
+            <div class="product-card__icon">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="20" stroke="url(#aura-grad)" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="24" cy="24" r="12" stroke="url(#aura-grad)" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="24" cy="24" r="4" fill="url(#aura-grad)"/>
+                <line x1="24" y1="4" x2="24" y2="12" stroke="url(#aura-grad)" stroke-width="1" opacity="0.4"/>
+                <line x1="24" y1="36" x2="24" y2="44" stroke="url(#aura-grad)" stroke-width="1" opacity="0.4"/>
+                <line x1="4" y1="24" x2="12" y2="24" stroke="url(#aura-grad)" stroke-width="1" opacity="0.4"/>
+                <line x1="36" y1="24" x2="44" y2="24" stroke="url(#aura-grad)" stroke-width="1" opacity="0.4"/>
+                <defs><linearGradient id="aura-grad" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3 class="product-card__title">AURA Intelligence</h3>
+            <p class="product-card__desc">
+              The engine connecting LLMs to prompts with full agent orchestration in a sandboxed environment. 
+              Dynamic agent creation, task scheduling, hardware integration — from drones to robotic devices.
+            </p>
+            <div class="product-card__tags">
+              <span class="tag mono">AGENT ORCHESTRATION</span>
+              <span class="tag mono">SANDBOX</span>
+              <span class="tag mono">HARDWARE</span>
+            </div>
+          </div>
+
+          <!-- Quantum -->
+          <div class="product-card glass-card fade-up" id="product-quantum">
+            <div class="product-card__badge mono">IN DEVELOPMENT</div>
+            <div class="product-card__icon">
+              <svg viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="url(#q-grad)" stroke-width="1.5" opacity="0.3"/>
+                <rect x="16" y="16" width="16" height="16" rx="2" stroke="url(#q-grad)" stroke-width="1.5" opacity="0.6"/>
+                <rect x="21" y="21" width="6" height="6" rx="1" fill="url(#q-grad)"/>
+                <circle cx="8" cy="8" r="2" fill="url(#q-grad)" opacity="0.5"/>
+                <circle cx="40" cy="8" r="2" fill="url(#q-grad)" opacity="0.5"/>
+                <circle cx="8" cy="40" r="2" fill="url(#q-grad)" opacity="0.5"/>
+                <circle cx="40" cy="40" r="2" fill="url(#q-grad)" opacity="0.5"/>
+                <defs><linearGradient id="q-grad" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3 class="product-card__title">Quantum Plugin</h3>
+            <p class="product-card__desc">
+              A precision plugin bridging LLMs and users for specific, high-impact tasks. 
+              Quantum-inspired efficiency for everyday AI interactions.
+            </p>
+            <div class="product-card__tags">
+              <span class="tag mono">LLM BRIDGE</span>
+              <span class="tag mono">PLUGIN</span>
+              <span class="tag mono">PRECISION</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="section section--capabilities">
+      <div class="section__content">
+        <span class="label mono fade-up">◈ CAPABILITIES</span>
+        <h2 class="heading fade-up">
+          Built for the<br /><span class="gradient-text">next frontier</span>
+        </h2>
+
+        <div class="capabilities-grid" id="capabilities-grid">
+          <!-- Cards injected by FeatureGrid.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="section section--cta">
+      <div class="section__content section__content--centered">
+        <span class="label mono fade-up">◈ JOIN US</span>
+        <h2 class="display-heading fade-up">
+          Ready to shape<br /><span class="gradient-text">the future?</span>
+        </h2>
+        <p class="section__desc fade-up">
+          Be among the first to experience Intutive's products. 
+          Sign up for early access and join the next generation of human-AI collaboration.
+        </p>
+        <div class="cta-form fade-up">
+          <div class="cta-form__input-wrap glass-card">
+            <input type="email" id="cta-email" class="cta-form__input" placeholder="Enter your email" aria-label="Email address" />
+            <button class="cta-form__submit btn btn--primary" id="cta-submit">
+              <span class="mono">JOIN WAITLIST</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <svg class="footer__wordmark" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect class="wm-letter" x="0" y="0" width="14" height="60" rx="2"/>
+              <path class="wm-letter" d="M40 60V0h14l36 42V0h14v60H90L54 18v42z"/>
+              <path class="wm-letter" d="M130 0h56v14h-21v46h-14V14h-21z"/>
+              <path class="wm-letter" d="M210 0h14v38c0 8.5 5.5 14 14 14s14-5.5 14-14V0h14v38c0 14-10 24-28 24s-28-10-28-24z"/>
+              <path class="wm-letter" d="M292 0h56v14h-21v46h-14V14h-21z"/>
+              <rect class="wm-letter" x="372" y="0" width="14" height="60" rx="2"/>
+              <path class="wm-letter" d="M410 0h15l21 46 21-46h15L455 60h-18z"/>
+              <path class="wm-letter" d="M504 0h52v14h-38v10h34v12h-34v10h38v14h-52z"/>
+            </svg>
+            <p class="footer__tagline">An Intuitive Partner for the AI Era</p>
+          </div>
+          <div class="footer__links">
+            <div class="footer__col">
+              <h4 class="footer__col-title mono">PRODUCTS</h4>
+              <a href="#products">AURA Intelligence</a>
+              <a href="#products">Quantum Plugin</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__col-title mono">COMPANY</h4>
+              <a href="#vision">Vision</a>
+              <a href="#capabilities">Capabilities</a>
+              <a href="#cta">Get Access</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__col-title mono">CONNECT</h4>
+              <a href="https://twitter.com/intutive" target="_blank" rel="noopener">Twitter / X</a>
+              <a href="https://linkedin.com/company/intutive" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/intutive" target="_blank" rel="noopener">GitHub</a>
+              <a href="mailto:connect@intutive.space">connect@intutive.space</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span class="mono">&copy; 2025 Intutive. All rights reserved.</span>
+          <span class="mono">intutive.space</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
